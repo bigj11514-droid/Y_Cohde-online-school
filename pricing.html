@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Pricing</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="pricing">
+    <header class="nav container">
+      <a class="brand" href="index.html">Y_Cohde online school</a>
+    </header>
+    <main class="container">
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow">Pricing</p>
+          <h2>Unlock more lessons</h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card highlight">
+            <h3>Starter</h3>
+            <p class="price">Free</p>
+            <p>Access lessons 1-7 and build a strong foundation.</p>
+          </article>
+          <article class="price-card">
+            <h3>Advance</h3>
+            <p class="price">50 GHS</p>
+            <p>Unlock the next ten lessons.</p>
+            <button class="btn btn-primary" id="payBtn">Pay 50 GHS</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.getElementById("payBtn")?.addEventListener("click", () => {
+        const cur = Number(localStorage.getItem("unlockedLessons") || 7);
+        const next = Math.min(cur + 10, 1000);
+        localStorage.setItem("unlockedLessons", String(next));
+        alert("Payment simulated: lessons unlocked up to " + next);
+        window.location.href = "index.html";
+      });
+    </script>
+  </body>
+</html>

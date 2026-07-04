@@ -1,0 +1,135 @@
+// lessons data shared across pages
+const lessons = [
+  {
+    id: 1,
+    title: 'HTML Basics',
+    category: 'HTML',
+    tags: ['HTML', 'structure'],
+    free: true,
+    heading: 'What is HTML?',
+    explanation: 'HTML gives a webpage its structure using tags such as headings, paragraphs, and images.',
+    codeIdentification: 'Use tags like <h1>, <p>, and <img>.',
+    example: '<h1>Hello World</h1>\n<p>This is my first page.</p>',
+    exercise: 'Create a page with one heading and one paragraph.',
+    project: 'Build a tiny profile card with your name and a short bio.'
+  },
+  {
+    id: 2,
+    title: 'HTML Lists and Links',
+    category: 'HTML',
+    tags: ['HTML', 'lists', 'links'],
+    free: true,
+    heading: 'Organizing content',
+    explanation: 'Lists help group related ideas and links connect pages together.',
+    codeIdentification: 'Use <ul>, <li>, and <a>.',
+    example: '<ul>\n  <li>HTML</li>\n  <li>CSS</li>\n</ul>\n<a href="#">Visit site</a>',
+    exercise: 'Create an unordered list of three hobbies.',
+    project: 'Create a simple navigation menu with three links.'
+  },
+  {
+    id: 3,
+    title: 'HTML Forms',
+    category: 'HTML',
+    tags: ['HTML', 'forms'],
+    free: true,
+    heading: 'Collecting user input',
+    explanation: 'Forms let users submit information such as names, emails, and messages.',
+    codeIdentification: 'Use <form>, <input>, and <button>.',
+    example: '<form>\n  <input type="text" placeholder="Name" />\n  <button>Submit</button>\n</form>',
+    exercise: 'Create a form with a text input and submit button.',
+    project: 'Build a contact form with name and message fields.'
+  },
+  {
+    id: 4,
+    title: 'CSS Styling',
+    category: 'CSS',
+    tags: ['CSS', 'styles'],
+    free: true,
+    heading: 'Making pages beautiful',
+    explanation: 'CSS adds color, spacing, and layout to HTML content.',
+    codeIdentification: 'Use selectors and properties like color and margin.',
+    example: 'h1 { color: blue; }\np { margin-top: 10px; }',
+    exercise: 'Style a heading in blue and add padding to a paragraph.',
+    project: 'Make a colorful welcome section for a landing page.'
+  },
+  {
+    id: 5,
+    title: 'CSS Box Model',
+    category: 'CSS',
+    tags: ['CSS', 'box model'],
+    free: true,
+    heading: 'Understanding spacing',
+    explanation: 'Every element has content, padding, border, and margin.',
+    codeIdentification: 'Use padding, border, and margin.',
+    example: '.card { padding: 16px; border: 1px solid #ccc; margin: 10px; }',
+    exercise: 'Create a card-style box with padding and a border.',
+    project: 'Design a small product card with image and text.'
+  },
+  {
+    id: 6,
+    title: 'JavaScript Variables',
+    category: 'JavaScript',
+    tags: ['JavaScript', 'variables'],
+    free: true,
+    heading: 'Storing data',
+    explanation: 'Variables hold values that your programs can use and change.',
+    codeIdentification: 'Use let and const.',
+    example: 'let name = "Amina";\nconst age = 20;',
+    exercise: 'Create two variables for your name and country.',
+    project: 'Display a personalized greeting on the page.'
+  },
+  {
+    id: 7,
+    title: 'JavaScript Functions',
+    category: 'JavaScript',
+    tags: ['JavaScript', 'functions'],
+    free: true,
+    heading: 'Reusing logic',
+    explanation: 'Functions group code so you can run it whenever needed.',
+    codeIdentification: 'Use function names and return values.',
+    example: 'function greet() {\n  return "Hello";\n}',
+    exercise: 'Write a function that returns your favorite color.',
+    project: 'Create a button that changes text when clicked.'
+  },
+  {
+    id: 8,
+    title: 'Responsive Layouts',
+    category: 'CSS',
+    tags: ['CSS', 'responsive'],
+    free: false,
+    heading: 'Building for every screen',
+    explanation: 'Responsive design helps websites adapt to phones, tablets, and desktops.',
+    codeIdentification: 'Use media queries and flexible units.',
+    example: '@media (max-width: 700px) { body { font-size: 14px; } }',
+    exercise: 'Create a media query that changes the layout on smaller screens.',
+    project: 'Make a responsive landing page with two columns on desktop and one on mobile.'
+  },
+  {
+    id: 9,
+    title: 'JavaScript Events',
+    category: 'JavaScript',
+    tags: ['JavaScript', 'events'],
+    free: false,
+    heading: 'Responding to user actions',
+    explanation: 'Events let your page react when a user clicks, submits, or types.',
+    codeIdentification: 'Use addEventListener and click events.',
+    example: 'button.addEventListener("click", () => alert("Hi"));',
+    exercise: 'Attach a click event to a button that shows an alert.',
+    project: 'Create a to-do list with add and remove actions.'
+  },
+  {
+    id: 10,
+    title: 'DOM Manipulation',
+    category: 'JavaScript',
+    tags: ['JavaScript', 'DOM'],
+    free: false,
+    heading: 'Updating the page dynamically',
+    explanation: 'The DOM lets JavaScript change text, styles, and structure on the page.',
+    codeIdentification: 'Use document.querySelector and textContent.',
+    example: 'document.querySelector("h1").textContent = "New title";',
+    exercise: 'Change the text inside a paragraph using JavaScript.',
+    project: 'Build a small quiz that updates the score after each answer.'
+  }
+];
+
+export default lessons;

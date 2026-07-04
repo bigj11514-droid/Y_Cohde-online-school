@@ -12,14 +12,14 @@
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
+  <body data-page="index">
     <header class="hero">
       <nav class="nav container">
-        <a class="brand" href="#top">Cohde School</a>
+        <a class="brand" href="index.html">Y_Cohde online school</a>
         <div class="nav-links">
-          <a href="#lessons">Lessons</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#about">About</a>
+          <a href="index.html">Home</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="about.html">About</a>
         </div>
       </nav>
 
@@ -28,12 +28,11 @@
           <p class="eyebrow">Learn web fundamentals with confidence</p>
           <h1>Build modern websites with HTML, CSS, and JavaScript.</h1>
           <p class="hero-copy">
-            Start with free lessons and unlock more advanced content with a
-            simple payment plan designed for steady progress.
+            Pick a subject below to explore structured lessons with examples and
+            exercises.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#lessons">Explore lessons</a>
-            <a class="btn btn-secondary" href="#pricing">View pricing</a>
+            <a class="btn btn-primary" href="#topics">Start Learning</a>
           </div>
         </div>
         <div class="hero-card">
@@ -116,15 +115,43 @@
         </div>
       </section>
 
-      <section class="container section" id="lessons">
+      <section class="container section" id="topics">
         <div class="section-heading">
-          <p class="eyebrow">Course library</p>
-          <h2>Lessons arranged from beginner to practical projects</h2>
+          <p class="eyebrow">Subjects</p>
+          <h2>Choose a topic to begin</h2>
         </div>
-        <div id="lessonList" class="lesson-list"></div>
+        <div id="topicsList" class="lesson-list">
+          <article class="lesson-card">
+            <h3>HTML</h3>
+            <p>Structure webpages with semantic tags, forms, and multimedia.</p>
+            <a class="btn btn-primary" href="subject.html?subject=HTML"
+              >Open HTML</a
+            >
+          </article>
+          <article class="lesson-card">
+            <h3>CSS</h3>
+            <p>
+              Style and layout using modern CSS: Flexbox, Grid, and responsive
+              patterns.
+            </p>
+            <a class="btn btn-primary" href="subject.html?subject=CSS"
+              >Open CSS</a
+            >
+          </article>
+          <article class="lesson-card">
+            <h3>JavaScript</h3>
+            <p>Add interactivity, handle events, and build dynamic apps.</p>
+            <a class="btn btn-primary" href="subject.html?subject=JavaScript"
+              >Open JavaScript</a
+            >
+          </article>
+        </div>
       </section>
     </main>
 
-    <script src="script.js"></script>
+    <script type="module">
+      import "./script.js";
+      window.appInit();
+    </script>
   </body>
 </html>
