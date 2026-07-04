@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cohde Online School</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <nav class="nav container">
+        <a class="brand" href="#top">Cohde School</a>
+        <div class="nav-links">
+          <a href="#lessons">Lessons</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#about">About</a>
+        </div>
+      </nav>
+
+      <div class="container hero-grid" id="top">
+        <div>
+          <p class="eyebrow">Learn web fundamentals with confidence</p>
+          <h1>Build modern websites with HTML, CSS, and JavaScript.</h1>
+          <p class="hero-copy">
+            Start with free lessons and unlock more advanced content with a
+            simple payment plan designed for steady progress.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#lessons">Explore lessons</a>
+            <a class="btn btn-secondary" href="#pricing">View pricing</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>Progress snapshot</h2>
+          <p id="unlockStatus">
+            You currently have access to lessons 1-7 for free.
+          </p>
+          <div class="progress-track">
+            <div id="progressBar" class="progress-bar"></div>
+          </div>
+          <ul>
+            <li>Lessons 1-7 are always free</li>
+            <li>Pay 50 GHS to unlock lessons 1-10</li>
+            <li>Each next payment unlocks the next ten lessons</li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="container section" id="about">
+        <div class="section-heading">
+          <p class="eyebrow">Why this school works</p>
+          <h2>A structured path from beginner to builder</h2>
+        </div>
+        <div class="about-grid">
+          <article class="info-card">
+            <h3>Clear lesson flow</h3>
+            <p>
+              Every lesson includes a heading, explanation, code identification,
+              example, exercise, and a mini project.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Practical learning</h3>
+            <p>
+              Students are encouraged to write code, practice small tasks, and
+              build mini projects immediately.
+            </p>
+          </article>
+          <article class="info-card">
+            <h3>Flexible access</h3>
+            <p>
+              The course grows with you, and payments unlock the next set of
+              lessons whenever you are ready.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" id="pricing">
+        <div class="section-heading">
+          <p class="eyebrow">Unlock more lessons</p>
+          <h2>Simple pricing for steady growth</h2>
+        </div>
+        <div class="pricing-grid">
+          <article class="price-card highlight">
+            <h3>Starter</h3>
+            <p class="price">Free</p>
+            <p>Access lessons 1-7 and build a strong foundation.</p>
+            <ul>
+              <li>Intro to HTML</li>
+              <li>CSS layout basics</li>
+              <li>JavaScript logic</li>
+            </ul>
+          </article>
+          <article class="price-card">
+            <h3>Advance</h3>
+            <p class="price">50 GHS</p>
+            <p>Unlock lessons 1-10 and continue your learning journey.</p>
+            <ul>
+              <li>Unlock next ten lessons</li>
+              <li>Access to practice projects</li>
+              <li>Instant course progression</li>
+            </ul>
+            <button class="btn btn-primary full-width" id="unlockBtn">
+              Unlock next set of lessons
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section" id="lessons">
+        <div class="section-heading">
+          <p class="eyebrow">Course library</p>
+          <h2>Lessons arranged from beginner to practical projects</h2>
+        </div>
+        <div id="lessonList" class="lesson-list"></div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
