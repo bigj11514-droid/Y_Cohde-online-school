@@ -26,13 +26,18 @@ img {
   max-width: 100%;
 }
 
+.brand-img{
+    padding: 10px;
+    border-radius: 10px;
+}
+
 .container {
   width: min(1120px, calc(100% - 2rem));
   margin: 0 auto;
 }
 
 .hero {
-  padding: 1rem 0 3rem;
+  padding: 0 0 3rem;
   background: radial-gradient(circle at top right, rgba(76, 201, 240, 0.25), transparent 30%);
 }
 
@@ -249,5 +254,13 @@ pre {
   .about-grid,
   .pricing-grid {
     grid-template-columns: 1fr;
+  }
+  .brand-img{
+    width: 100%;
+    height: 150px;
+    padding: 0px;
+  }
+  .img-cont{
+    margin-top: 0px;
   }
 }
