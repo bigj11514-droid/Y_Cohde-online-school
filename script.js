@@ -70,9 +70,21 @@ function showInterestPrompt(subject, onPaid) {
   document.getElementById('likeYes').addEventListener('click', () => {
     document.getElementById('paymentPanel').innerHTML = `
       <p>Great! You can continue with the next set of lessons for ${PAYMENT_AMOUNT} GHS.</p>
-      <button class="btn btn-primary" id="payNow">Pay ${PAYMENT_AMOUNT} GHS</button>
+      <form id="payForm">
+        <label>Mobile money number</label>
+        <input id="phone" type="tel" placeholder="024xxxxxxx" required />
+        <label>Reference</label>
+        <input id="reference" type="text" placeholder="YCOHDE-${Date.now()}" required />
+        <button class="btn btn-primary" style="margin-top:.8rem" type="submit">Pay ${PAYMENT_AMOUNT} GHS</button>
+      </form>
     `;
-    document.getElementById('payNow').addEventListener('click', () => {
+    document.getElementById('payForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const phone = document.getElementById('phone').value.trim();
+      const reference = document.getElementById('reference').value.trim();
+      const payments = JSON.parse(localStorage.getItem('payments') || '[]');
+      payments.push({ subject, phone, reference, amount: PAYMENT_AMOUNT, status: 'pending', at: new Date().toISOString() });
+      localStorage.setItem('payments', JSON.stringify(payments));
       const nextCount = Math.min(getUnlockedCount(subject) + FREE_BLOCK, getSubjectLessons(subject).length);
       setUnlockedCount(subject, nextCount);
       removeModal();
@@ -247,12 +259,117 @@ export function initSubmit() {
   });
 }
 
+function renderAuthPage() {
+  const root = document.getElementById('authRoot');
+  if (!root) return;
+  root.innerHTML = `
+    <form id="loginForm">
+      <label>Email</label>
+      <input id="loginEmail" type="email" required />
+      <label>Password</label>
+      <input id="loginPassword" type="password" required />
+      <button class="btn btn-primary" style="margin-top:.8rem" type="submit">Login</button>
+    </form>
+  `;
+
+  document.getElementById('showLogin').addEventListener('click', () => renderAuthPage());
+  document.getElementById('showRegister').addEventListener('click', () => renderRegisterPage());
+
+  document.getElementById('loginForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const password = document.getElementById('loginPassword').value;
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find((entry) => entry.email === email && entry.password === password);
+    if (user) {
+      localStorage.setItem('currentUser', JSON.stringify(user));
+      window.location.href = 'index.html';
+    } else {
+      root.innerHTML += '<p class="lesson-code">Invalid login details.</p>';
+    }
+  });
+}
+
+function renderRegisterPage() {
+  const root = document.getElementById('authRoot');
+  if (!root) return;
+  root.innerHTML = `
+    <form id="registerForm">
+      <label>Name</label>
+      <input id="regName" required />
+      <label>Email</label>
+      <input id="regEmail" type="email" required />
+      <label>Password</label>
+      <input id="regPassword" type="password" required />
+      <label>Role</label>
+      <select id="regRole">
+        <option value="student">Student</option>
+        <option value="teacher">Teacher</option>
+      </select>
+      <button class="btn btn-primary" style="margin-top:.8rem" type="submit">Register</button>
+    </form>
+  `;
+
+  document.getElementById('showLogin').addEventListener('click', () => renderAuthPage());
+  document.getElementById('showRegister').addEventListener('click', () => renderRegisterPage());
+
+  document.getElementById('registerForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const newUser = {
+      name: document.getElementById('regName').value.trim(),
+      email: document.getElementById('regEmail').value.trim(),
+      password: document.getElementById('regPassword').value,
+      role: document.getElementById('regRole').value
+    };
+    users.push(newUser);
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+    window.location.href = newUser.role === 'teacher' ? 'teacher.html' : 'index.html';
+  });
+}
+
+function renderTeacherDashboard() {
+  const root = document.getElementById('teacherRoot');
+  if (!root) return;
+  const submissions = JSON.parse(localStorage.getItem('submissions') || '[]');
+  if (!submissions.length) {
+    root.innerHTML = '<p>No submissions yet.</p>';
+    return;
+  }
+  root.innerHTML = submissions.map((submission) => `
+    <article class="lesson-card" style="margin-top:.75rem;">
+      <h3>${submission.subject}</h3>
+      <p><strong>Lesson:</strong> ${submission.lesson}</p>
+      <p><strong>Answer:</strong> ${submission.answer || 'No answer provided'}</p>
+      <p><strong>Status:</strong> ${submission.done ? 'Completed' : 'Pending'}</p>
+      <button class="btn btn-primary" data-mark="${submission.lesson}">Mark as reviewed</button>
+    </article>
+  `).join('');
+
+  root.querySelectorAll('[data-mark]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const mark = button.getAttribute('data-mark');
+      const current = JSON.parse(localStorage.getItem('submissions') || '[]');
+      const updated = current.map((item) => (item.lesson === Number(mark) ? { ...item, marked: true } : item));
+      localStorage.setItem('submissions', JSON.stringify(updated));
+      renderTeacherDashboard();
+    });
+  });
+}
+
 window.appInit = function () {
   const page = document.body.dataset.page;
   if (page === 'index') initIndex();
   if (page === 'subject') initSubject();
   if (page === 'lesson') initLesson();
   if (page === 'submit') initSubmit();
+  if (page === 'auth') {
+    document.getElementById('showLogin').addEventListener('click', () => renderAuthPage());
+    document.getElementById('showRegister').addEventListener('click', () => renderRegisterPage());
+    renderAuthPage();
+  }
+  if (page === 'teacher') renderTeacherDashboard();
 };
 
 document.addEventListener('DOMContentLoaded', () => {

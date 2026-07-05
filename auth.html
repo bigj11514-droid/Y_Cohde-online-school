@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Student Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body data-page="auth">
+    <header class="nav container">
+      <a class="brand" href="index.html">Y_Cohde online school</a>
+    </header>
+    <main class="container">
+      <section class="section">
+        <div class="lesson-card">
+          <h2>Student access</h2>
+          <div class="auth-tabs">
+            <button class="btn btn-primary" id="showLogin">Login</button>
+            <button class="btn btn-secondary" id="showRegister">
+              Register
+            </button>
+          </div>
+          <div id="authRoot"></div>
+        </div>
+      </section>
+    </main>
+    <script type="module">
+      import "./script.js";
+      window.appInit();
+    </script>
+  </body>
+</html>
