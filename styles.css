@@ -265,6 +265,34 @@ pre {
   border: 1px solid var(--border);
 }
 
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(4, 32, 40, 0.45);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.modal-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.4rem;
+  width: min(460px, 100%);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.payment-panel {
+  margin-top: 0.8rem;
+}
+
 @media (max-width: 800px) {
   .hero-grid,
   .about-grid,
