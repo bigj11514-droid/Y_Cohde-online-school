@@ -87,19 +87,25 @@ img {
   padding: 10px 50px;
 }
 a{
-    border: 1px solid;
+    border: 1px ;
     padding: 3px 15px;
-    border-radius: 10px;
+    border-radius: 5px;
     border-top: transparent;
     border-bottom: transparent;
     border-left-color: #00aaff;
     border-right-color: #00aaff;
     box-shadow: 1px 0px #00d9ff;
+    box-shadow: 2px 2px 6px whitesmoke;
 }
 a:hover{
-    
+  transform: translateY(2px);
+  transition: ease-in 1s;
 }
 
+.search-btn{
+    border-radius: 10px;
+    border: 2px solid  #00aaff;
+}
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
@@ -181,6 +187,12 @@ h3 {
 .hero-card {
   padding: 1.3rem;
 }
+
+.hero-card{
+  transform: translateY(2px);
+  transition: ease-in 1s;
+}
+
 
 .progress-track {
   width: 100%;
