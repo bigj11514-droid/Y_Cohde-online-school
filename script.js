@@ -359,6 +359,14 @@ function renderTeacherDashboard() {
 }
 
 window.appInit = function () {
+  if (window.location.pathname.endsWith('index.html') || window.location.pathname === '/' || window.location.pathname.endsWith('/')) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser') || 'null');
+    if (!currentUser) {
+      window.location.replace('auth.html');
+      return;
+    }
+  }
+
   const page = document.body.dataset.page;
   if (page === 'index') initIndex();
   if (page === 'subject') initSubject();
