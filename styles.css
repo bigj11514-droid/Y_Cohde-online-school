@@ -105,10 +105,18 @@ a:hover{
 .search-btn{
     border-radius: 10px;
     border: 2px solid  #00aaff;
+    height: 30px;
 }
+.nav-links{
+    padding-right: 0px;
+    display: flex;
+    align-items: center;
+}
+
 .nav-links a {
   color: var(--muted);
   text-decoration: none;
+  white-space: nowrap;
 }
 
 .hero-grid {
